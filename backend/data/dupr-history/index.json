@@ -1,0 +1,18 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-05-22",
+      "scrapedAt": "2026-05-22T01:15:38.841Z",
+      "file": "2026-05-22.json",
+      "playerCount": 200
+    },
+    {
+      "date": "2026-06-05",
+      "scrapedAt": "2026-06-05T22:49:32.547Z",
+      "file": "2026-06-05.json",
+      "playerCount": 600,
+      "boardsCount": 12,
+      "uniquePlayers": 490
+    }
+  ]
+}

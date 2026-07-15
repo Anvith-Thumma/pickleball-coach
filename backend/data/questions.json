@@ -1,0 +1,293 @@
+{
+  "ATTRIBUTE_KEYS": [
+    "dink_consistency",
+    "aggression",
+    "net_presence",
+    "power",
+    "reset_ability",
+    "third_shot_drop",
+    "patience",
+    "speed_up_tendency",
+    "lob_usage",
+    "court_coverage",
+    "transition_play",
+    "counter_attack",
+    "return_pressure",
+    "poach_tendency"
+  ],
+  "SECTIONS": {
+    "kitchen": "Kitchen & rallies",
+    "attack": "Attack & pace",
+    "defense": "Defense & resets",
+    "movement": "Court movement",
+    "doubles": "Doubles IQ",
+    "serve_return": "Serve & return",
+    "identity": "Playing identity"
+  },
+  "QUESTIONS": [
+    {
+      "id": 1,
+      "section": "kitchen",
+      "text": "Your preferred third shot:",
+      "options": [
+        { "label": "Soft drop every time", "weights": { "third_shot_drop": 0.95, "patience": 0.8, "transition_play": 0.75 } },
+        { "label": "Mostly drop, sometimes drive", "weights": { "third_shot_drop": 0.75, "patience": 0.65, "transition_play": 0.65 } },
+        { "label": "Mix based on opponent", "weights": { "third_shot_drop": 0.55, "aggression": 0.5, "transition_play": 0.6 } },
+        { "label": "Drive when I can", "weights": { "third_shot_drop": 0.35, "power": 0.7, "aggression": 0.65, "return_pressure": 0.55 } },
+        { "label": "Attack with drives", "weights": { "third_shot_drop": 0.15, "power": 0.9, "aggression": 0.85, "return_pressure": 0.75 } }
+      ]
+    },
+    {
+      "id": 2,
+      "section": "kitchen",
+      "text": "At the kitchen line, you usually:",
+      "options": [
+        { "label": "Patient dinks until error", "weights": { "dink_consistency": 0.9, "patience": 0.9, "speed_up_tendency": 0.2 } },
+        { "label": "Dink until clear opening", "weights": { "dink_consistency": 0.75, "patience": 0.7, "speed_up_tendency": 0.45 } },
+        { "label": "Balanced dink and speed-up", "weights": { "dink_consistency": 0.6, "speed_up_tendency": 0.55, "counter_attack": 0.5 } },
+        { "label": "Look to speed up often", "weights": { "speed_up_tendency": 0.75, "aggression": 0.7, "counter_attack": 0.65 } },
+        { "label": "Attack first chance", "weights": { "speed_up_tendency": 0.95, "aggression": 0.9, "net_presence": 0.85, "counter_attack": 0.8 } }
+      ]
+    },
+    {
+      "id": 3,
+      "section": "kitchen",
+      "text": "Dink consistency (honest self-rating):",
+      "options": [
+        { "label": "Often pop up or miss", "weights": { "dink_consistency": 0.15 } },
+        { "label": "Inconsistent", "weights": { "dink_consistency": 0.35 } },
+        { "label": "Decent most rallies", "weights": { "dink_consistency": 0.55 } },
+        { "label": "Very reliable", "weights": { "dink_consistency": 0.75 } },
+        { "label": "Laser consistent", "weights": { "dink_consistency": 0.95 } }
+      ]
+    },
+    {
+      "id": 4,
+      "section": "kitchen",
+      "text": "Patience in long dink rallies:",
+      "options": [
+        { "label": "Will dink all day", "weights": { "patience": 0.95, "dink_consistency": 0.85 } },
+        { "label": "Very patient", "weights": { "patience": 0.75, "dink_consistency": 0.7 } },
+        { "label": "Patient until opening", "weights": { "patience": 0.55 } },
+        { "label": "Get restless after ~5 shots", "weights": { "patience": 0.35, "speed_up_tendency": 0.6 } },
+        { "label": "Hate long rallies — attack early", "weights": { "patience": 0.1, "speed_up_tendency": 0.9, "aggression": 0.75 } }
+      ]
+    },
+    {
+      "id": 5,
+      "section": "attack",
+      "text": "When you are winning, you:",
+      "options": [
+        { "label": "Stay patient, no unnecessary risks", "weights": { "patience": 0.95, "aggression": 0.25 } },
+        { "label": "Mostly steady, occasional attack", "weights": { "patience": 0.75, "aggression": 0.45 } },
+        { "label": "Push advantage moderately", "weights": { "aggression": 0.6, "net_presence": 0.55 } },
+        { "label": "Press hard at the net", "weights": { "aggression": 0.8, "net_presence": 0.75, "counter_attack": 0.65 } },
+        { "label": "Go for winners immediately", "weights": { "aggression": 0.95, "power": 0.85, "counter_attack": 0.8 } }
+      ]
+    },
+    {
+      "id": 6,
+      "section": "attack",
+      "text": "Power on your drives and put-aways:",
+      "options": [
+        { "label": "Placement over power", "weights": { "power": 0.2, "dink_consistency": 0.7 } },
+        { "label": "Moderate pace", "weights": { "power": 0.45 } },
+        { "label": "Solid when set up", "weights": { "power": 0.65, "aggression": 0.55 } },
+        { "label": "Heavy topspin often", "weights": { "power": 0.8, "aggression": 0.7, "return_pressure": 0.6 } },
+        { "label": "Maximum power always", "weights": { "power": 0.95, "aggression": 0.85, "return_pressure": 0.8 } }
+      ]
+    },
+    {
+      "id": 7,
+      "section": "attack",
+      "text": "Hand battles at the net:",
+      "options": [
+        { "label": "I avoid them — reset out", "weights": { "reset_ability": 0.85, "aggression": 0.2 } },
+        { "label": "Pick spots carefully", "weights": { "aggression": 0.45, "net_presence": 0.6 } },
+        { "label": "Engage when ahead", "weights": { "aggression": 0.6, "net_presence": 0.7, "counter_attack": 0.6 } },
+        { "label": "Love hand battles", "weights": { "aggression": 0.85, "speed_up_tendency": 0.8, "net_presence": 0.85, "counter_attack": 0.75 } },
+        { "label": "Always fire back harder", "weights": { "aggression": 0.95, "speed_up_tendency": 0.95, "power": 0.85, "counter_attack": 0.9 } }
+      ]
+    },
+    {
+      "id": 8,
+      "section": "defense",
+      "text": "When opponents attack your body:",
+      "options": [
+        { "label": "Reset almost every time", "weights": { "reset_ability": 0.95, "patience": 0.85 } },
+        { "label": "Reset often, block sometimes", "weights": { "reset_ability": 0.75 } },
+        { "label": "Mix reset and counter", "weights": { "reset_ability": 0.5, "aggression": 0.5, "counter_attack": 0.55 } },
+        { "label": "Counter when possible", "weights": { "reset_ability": 0.3, "aggression": 0.7, "counter_attack": 0.75 } },
+        { "label": "Attack back immediately", "weights": { "reset_ability": 0.15, "aggression": 0.9, "speed_up_tendency": 0.8, "counter_attack": 0.9 } }
+      ]
+    },
+    {
+      "id": 9,
+      "section": "defense",
+      "text": "Defensive style when under pressure:",
+      "options": [
+        { "label": "Absorb and reset", "weights": { "reset_ability": 0.9, "patience": 0.85 } },
+        { "label": "Block and dink back", "weights": { "reset_ability": 0.7, "dink_consistency": 0.65 } },
+        { "label": "Lob to reset point", "weights": { "lob_usage": 0.7, "patience": 0.6 } },
+        { "label": "Counter-attack", "weights": { "aggression": 0.7, "power": 0.65, "counter_attack": 0.8 } },
+        { "label": "Fight fire with fire", "weights": { "aggression": 0.9, "speed_up_tendency": 0.85, "counter_attack": 0.9 } }
+      ]
+    },
+    {
+      "id": 10,
+      "section": "defense",
+      "text": "How often do you use lobs?",
+      "options": [
+        { "label": "Rarely", "weights": { "lob_usage": 0.1 } },
+        { "label": "Occasionally defensive", "weights": { "lob_usage": 0.35 } },
+        { "label": "Situational mix", "weights": { "lob_usage": 0.55 } },
+        { "label": "Regular tactical lobs", "weights": { "lob_usage": 0.75, "patience": 0.6 } },
+        { "label": "Lob is a primary weapon", "weights": { "lob_usage": 0.95 } }
+      ]
+    },
+    {
+      "id": 11,
+      "section": "movement",
+      "text": "How often do you get to the kitchen after returning?",
+      "options": [
+        { "label": "Almost every point", "weights": { "net_presence": 0.95, "court_coverage": 0.8, "transition_play": 0.85 } },
+        { "label": "Most points", "weights": { "net_presence": 0.75, "court_coverage": 0.65, "transition_play": 0.7 } },
+        { "label": "About half", "weights": { "net_presence": 0.5, "court_coverage": 0.5, "transition_play": 0.55 } },
+        { "label": "Sometimes", "weights": { "net_presence": 0.3, "patience": 0.55 } },
+        { "label": "Rarely — I hang back", "weights": { "net_presence": 0.1, "lob_usage": 0.5 } }
+      ]
+    },
+    {
+      "id": 12,
+      "section": "movement",
+      "text": "Transition zone (mid-court) play:",
+      "options": [
+        { "label": "Rush through awkwardly", "weights": { "court_coverage": 0.25, "reset_ability": 0.3, "transition_play": 0.2 } },
+        { "label": "Working on it", "weights": { "court_coverage": 0.45, "reset_ability": 0.45, "transition_play": 0.45 } },
+        { "label": "Split-step and move up", "weights": { "court_coverage": 0.65, "reset_ability": 0.6, "transition_play": 0.65 } },
+        { "label": "Comfortable blocking resets", "weights": { "reset_ability": 0.8, "court_coverage": 0.75, "transition_play": 0.8 } },
+        { "label": "Dominate transition", "weights": { "reset_ability": 0.9, "court_coverage": 0.9, "transition_play": 0.95 } }
+      ]
+    },
+    {
+      "id": 13,
+      "section": "movement",
+      "text": "Court coverage and mobility:",
+      "options": [
+        { "label": "Struggle to cover gaps", "weights": { "court_coverage": 0.2 } },
+        { "label": "Average movement", "weights": { "court_coverage": 0.45 } },
+        { "label": "Good lateral movement", "weights": { "court_coverage": 0.65 } },
+        { "label": "Quick to poach and cover", "weights": { "court_coverage": 0.8, "net_presence": 0.7, "poach_tendency": 0.65 } },
+        { "label": "Elite — rarely beat wide", "weights": { "court_coverage": 0.95, "net_presence": 0.85, "poach_tendency": 0.75 } }
+      ]
+    },
+    {
+      "id": 14,
+      "section": "doubles",
+      "text": "In doubles, how often do you poach or pinch the middle?",
+      "options": [
+        { "label": "Almost never — I hold my line", "weights": { "poach_tendency": 0.1, "patience": 0.7 } },
+        { "label": "Rarely, only obvious balls", "weights": { "poach_tendency": 0.3 } },
+        { "label": "Situational poaches", "weights": { "poach_tendency": 0.55, "net_presence": 0.6 } },
+        { "label": "Active poacher", "weights": { "poach_tendency": 0.75, "net_presence": 0.8, "aggression": 0.65 } },
+        { "label": "I hunt the middle constantly", "weights": { "poach_tendency": 0.95, "net_presence": 0.9, "aggression": 0.75 } }
+      ]
+    },
+    {
+      "id": 15,
+      "section": "doubles",
+      "text": "When a ball floats down the middle in doubles:",
+      "options": [
+        { "label": "Let my partner take it", "weights": { "poach_tendency": 0.2, "patience": 0.65 } },
+        { "label": "Communicate then defer", "weights": { "poach_tendency": 0.4 } },
+        { "label": "Whoever is stronger forehand", "weights": { "poach_tendency": 0.55, "court_coverage": 0.55 } },
+        { "label": "I usually take it", "weights": { "poach_tendency": 0.75, "aggression": 0.65, "counter_attack": 0.6 } },
+        { "label": "Mine — I attack the middle", "weights": { "poach_tendency": 0.9, "aggression": 0.8, "counter_attack": 0.75 } }
+      ]
+    },
+    {
+      "id": 16,
+      "section": "doubles",
+      "text": "Your primary match format:",
+      "options": [
+        { "label": "Mostly singles", "weights": { "court_coverage": 0.75, "poach_tendency": 0.25, "transition_play": 0.65 } },
+        { "label": "Singles-focused, some doubles", "weights": { "court_coverage": 0.65, "poach_tendency": 0.4 } },
+        { "label": "Equal singles and doubles", "weights": { "court_coverage": 0.6, "poach_tendency": 0.55 } },
+        { "label": "Mostly doubles", "weights": { "poach_tendency": 0.75, "net_presence": 0.7 } },
+        { "label": "Doubles only", "weights": { "poach_tendency": 0.9, "net_presence": 0.85 } }
+      ]
+    },
+    {
+      "id": 17,
+      "section": "serve_return",
+      "text": "Return of serve approach:",
+      "options": [
+        { "label": "Deep and safe — start the dink", "weights": { "return_pressure": 0.25, "patience": 0.8, "third_shot_drop": 0.7 } },
+        { "label": "Deep with placement", "weights": { "return_pressure": 0.45, "dink_consistency": 0.6 } },
+        { "label": "Mix depth and pace", "weights": { "return_pressure": 0.55 } },
+        { "label": "Aggressive returns when possible", "weights": { "return_pressure": 0.75, "aggression": 0.65, "power": 0.6 } },
+        { "label": "Attack returns — push them back", "weights": { "return_pressure": 0.95, "aggression": 0.85, "power": 0.8 } }
+      ]
+    },
+    {
+      "id": 18,
+      "section": "serve_return",
+      "text": "Serve strategy:",
+      "options": [
+        { "label": "Just get it in play", "weights": { "return_pressure": 0.2, "patience": 0.7 } },
+        { "label": "Consistent depth", "weights": { "return_pressure": 0.4 } },
+        { "label": "Target weak side", "weights": { "return_pressure": 0.55, "aggression": 0.45 } },
+        { "label": "Power and spin serves", "weights": { "return_pressure": 0.75, "power": 0.65 } },
+        { "label": "Serve is a weapon", "weights": { "return_pressure": 0.9, "power": 0.85, "aggression": 0.7 } }
+      ]
+    },
+    {
+      "id": 19,
+      "section": "attack",
+      "text": "Erne, ATP, or aggressive around-the-post plays:",
+      "options": [
+        { "label": "Never — too risky", "weights": { "patience": 0.8, "counter_attack": 0.3 } },
+        { "label": "Rarely attempt", "weights": { "counter_attack": 0.4, "court_coverage": 0.45 } },
+        { "label": "Occasionally when set up", "weights": { "counter_attack": 0.6, "court_coverage": 0.65 } },
+        { "label": "Look for these chances", "weights": { "counter_attack": 0.75, "aggression": 0.7, "court_coverage": 0.75 } },
+        { "label": "Active part of my game", "weights": { "counter_attack": 0.9, "aggression": 0.85, "court_coverage": 0.85 } }
+      ]
+    },
+    {
+      "id": 20,
+      "section": "kitchen",
+      "text": "Drop vs drive when opponents are deep:",
+      "options": [
+        { "label": "Always drop", "weights": { "third_shot_drop": 0.95, "patience": 0.8 } },
+        { "label": "Usually drop", "weights": { "third_shot_drop": 0.7 } },
+        { "label": "50/50 decision", "weights": { "third_shot_drop": 0.5, "power": 0.5 } },
+        { "label": "Often drive", "weights": { "third_shot_drop": 0.3, "power": 0.75, "return_pressure": 0.55 } },
+        { "label": "Drive to push them back", "weights": { "third_shot_drop": 0.1, "power": 0.9, "aggression": 0.8, "return_pressure": 0.75 } }
+      ]
+    },
+    {
+      "id": 21,
+      "section": "defense",
+      "text": "After blocking a hard shot, you usually:",
+      "options": [
+        { "label": "Reset and rebuild", "weights": { "reset_ability": 0.9, "patience": 0.8, "counter_attack": 0.35 } },
+        { "label": "Dink back safely", "weights": { "reset_ability": 0.7, "dink_consistency": 0.7 } },
+        { "label": "Look for a counter chance", "weights": { "counter_attack": 0.65, "reset_ability": 0.55 } },
+        { "label": "Speed up if ball sits up", "weights": { "counter_attack": 0.8, "speed_up_tendency": 0.75 } },
+        { "label": "Immediately counter-attack", "weights": { "counter_attack": 0.95, "aggression": 0.85, "speed_up_tendency": 0.8 } }
+      ]
+    },
+    {
+      "id": 22,
+      "section": "identity",
+      "text": "Overall playing identity:",
+      "options": [
+        { "label": "The Patient Architect", "weights": { "patience": 0.9, "dink_consistency": 0.8, "third_shot_drop": 0.85, "transition_play": 0.75 } },
+        { "label": "The Net Hunter", "weights": { "net_presence": 0.85, "aggression": 0.7, "speed_up_tendency": 0.65, "poach_tendency": 0.7 } },
+        { "label": "The Power Baseline", "weights": { "power": 0.8, "aggression": 0.75, "third_shot_drop": 0.35, "return_pressure": 0.75 } },
+        { "label": "The Defensive Wall", "weights": { "reset_ability": 0.9, "patience": 0.85, "lob_usage": 0.5, "counter_attack": 0.45 } },
+        { "label": "The All-Court Hybrid", "weights": { "court_coverage": 0.7, "aggression": 0.55, "dink_consistency": 0.6, "transition_play": 0.7, "poach_tendency": 0.6 } }
+      ]
+    }
+  ]
+}
