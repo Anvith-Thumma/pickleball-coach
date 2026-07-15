@@ -1,6 +1,6 @@
 # Pickleball Coach
 
-Full-stack AI pickleball coaching app with streaming chat, a 22-question Player DNA assessment, and pro-player similarity matching powered by cosine similarity + Claude.
+Full-stack AI pickleball coaching app with streaming chat, a 22-question Player DNA assessment, and pro-player similarity matching powered by cosine similarity.
 
 ## Tech Stack
 
