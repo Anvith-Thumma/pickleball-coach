@@ -2,7 +2,6 @@ services:
   - type: web
     name: pickleball-coach-api
     runtime: node
-    plan: starter
     rootDir: backend
     buildCommand: npm install
     startCommand: npm start
@@ -16,9 +15,3 @@ services:
         sync: false
       - key: CORS_ORIGIN
         sync: false
-      - key: DUPR_HISTORY_DIR
-        value: /var/data/dupr-history
-    disk:
-      name: dupr-history-disk
-      mountPath: /var/data/dupr-history
-      sizeGB: 1
