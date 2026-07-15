@@ -21,6 +21,10 @@ dotenv.config({ path: join(__dirname, '..', '.env') });
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Render (and most PaaS hosts) sit behind a reverse proxy, so express-rate-limit
+// needs this to correctly identify each client's real IP via X-Forwarded-For.
+app.set('trust proxy', 1);
+
 function loadPros() {
   const enrichedPath = join(__dirname, 'data', 'pros-enriched.json');
   const basePath = join(__dirname, 'data', 'pros.json');
@@ -46,23 +50,53 @@ try {
   console.warn('dupr-rankings.json not found — run: npm run scrape:dupr');
 }
 
+// Comma-separated exact origins, e.g. CORS_ORIGIN=https://pickleball-coach.vercel.app
+const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:5173,http://127.0.0.1:5173')
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+// Matches any Vercel preview deployment of this project, e.g.
+// https://pickleball-coach-git-feature-x-anvith.vercel.app
+const vercelPreviewPattern = /^https:\/\/pickleball-coach[a-z0-9-]*\.vercel\.app$/i;
+
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin(origin, callback) {
+      // No Origin header = same-origin/non-browser request (curl, health checks) — allow.
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin) || vercelPreviewPattern.test(origin)) {
+        return callback(null, true);
+      }
+      // Reject without throwing — an Error here would surface a stack trace
+      // to the client via Express's default error handler.
+      return callback(null, false);
+    },
     methods: ['GET', 'POST'],
   })
 );
 app.use(express.json({ limit: '1mb' }));
 
-const limiter = rateLimit({
+const cheapLimiter = rateLimit({
   windowMs: 60 * 1000,
-  max: 30,
+  max: 20, // static/read-only data (pros list, questions, health, dupr rankings/history)
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many requests. Please try again in a minute.' },
 });
 
-app.use('/api', limiter);
+const aiLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 6, // each request can fan out to multiple Anthropic/Tavily/Exa calls — keep tight
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many AI requests. Please wait a minute and try again.' },
+});
+
+app.use('/api/chat', aiLimiter);
+app.use('/api/similarity', aiLimiter);
+app.use('/api/scouting', aiLimiter);
+app.use('/api', cheapLimiter);
 
 let questionsData = null;
 try {
@@ -167,7 +201,7 @@ app.get('/api/pros', (_req, res) => {
   });
 });
 
-app.get('/api/pros/:name/context', async (req, res) => {
+app.get('/api/pros/:name/context', aiLimiter, async (req, res) => {
   try {
     const name = decodeURIComponent(req.params.name);
     const pro = prosData.pros.find(

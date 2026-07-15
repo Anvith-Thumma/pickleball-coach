@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import ChatMessageContent from './ChatMessageContent.jsx';
 import { displayUserMessage } from '../utils/formatChatMessage.js';
+import { apiUrl } from '../utils/apiBase.js';
 
 const SKILL_LEVELS = ['Beginner', 'Intermediate', 'Advanced'];
 
@@ -62,7 +63,7 @@ export default function Chat({ userProfile }) {
     setToolStatus(null);
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch(apiUrl('/api/chat'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PlayerIntake from './PlayerIntake.jsx';
 import { buildFullProfile } from '../utils/profileCalibration.js';
+import { apiUrl } from '../utils/apiBase.js';
 
 export default function Assessment({ onComplete, loading }) {
   const [phase, setPhase] = useState('intake');
@@ -13,7 +14,7 @@ export default function Assessment({ onComplete, loading }) {
   const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
-    fetch('/api/questions')
+    fetch(apiUrl('/api/questions'))
       .then((r) => r.json())
       .then((data) => {
         setQuestions(data.questions ?? []);

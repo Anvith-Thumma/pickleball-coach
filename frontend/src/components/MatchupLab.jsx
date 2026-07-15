@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import H2HAnalysis from './H2HAnalysis.jsx';
 import ScoutingReportContent from './ScoutingReportContent.jsx';
 import { loadUserProfile } from '../utils/profileStorage.js';
+import { apiUrl } from '../utils/apiBase.js';
 
 const FORMATS = [
   { id: 'doubles', label: 'Doubles' },
@@ -90,7 +91,7 @@ export default function MatchupLab({ userProfile, initialOpponent, onGoToDna }) 
   }, [hasDna]);
 
   useEffect(() => {
-    fetch('/api/pros')
+    fetch(apiUrl('/api/pros'))
       .then((r) => r.json())
       .then((data) => setPros(data.pros ?? []))
       .catch(() => setError('Could not load pro list'));
@@ -157,7 +158,7 @@ export default function MatchupLab({ userProfile, initialOpponent, onGoToDna }) 
     setLoading(true);
     setScoutingReport(null);
     try {
-      const res = await fetch('/api/matchup', {
+      const res = await fetch(apiUrl('/api/matchup'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(buildPayload()),
@@ -177,7 +178,7 @@ export default function MatchupLab({ userProfile, initialOpponent, onGoToDna }) 
     setError(null);
     setScoutLoading(true);
     try {
-      const res = await fetch('/api/scouting', {
+      const res = await fetch(apiUrl('/api/scouting'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...buildPayload(), focusPlayer: 'playerA' }),

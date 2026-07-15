@@ -5,6 +5,7 @@ import DNAReport from './components/DNAReport.jsx';
 import MatchupLab from './components/MatchupLab.jsx';
 import SavedProfileNotice from './components/SavedProfileNotice.jsx';
 import { saveUserProfile, loadUserProfile, clearUserProfile } from './utils/profileStorage.js';
+import { apiUrl } from './utils/apiBase.js';
 
 const TABS = [
   { id: 'chat', label: 'Coach Chat' },
@@ -42,7 +43,7 @@ export default function App() {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 120000);
 
-      const res = await fetch('/api/similarity', {
+      const res = await fetch(apiUrl('/api/similarity'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

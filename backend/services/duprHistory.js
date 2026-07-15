@@ -6,7 +6,7 @@ import { countTotalPlayers } from './duprBoards.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, '..', 'data');
-const HISTORY_DIR = join(DATA_DIR, 'dupr-history');
+const HISTORY_DIR = process.env.DUPR_HISTORY_DIR || join(DATA_DIR, 'dupr-history');
 const INDEX_PATH = join(HISTORY_DIR, 'index.json');
 const LATEST_PATH = join(DATA_DIR, 'dupr-rankings.json');
 
